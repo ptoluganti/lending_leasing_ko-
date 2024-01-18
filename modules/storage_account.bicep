@@ -7,7 +7,7 @@ param location string = resourceGroup().location
 @description('The name of the storage account')
 param storageAccountName string = 'st${uniqueString(resourceGroup().id)}'
 
-resource sa 'Microsoft.Storage/storageAccounts@2022-09-01' = {
+resource sa 'Microsoft.Storage/storageAccounts@2023-01-01' = {
   name: storageAccountName
   location: location
   identity: {
@@ -28,6 +28,7 @@ resource sa 'Microsoft.Storage/storageAccounts@2022-09-01' = {
     }
     networkAcls:{
       defaultAction: 'Deny'
+      bypass: 'AzureServices'
     }
   }
 }
