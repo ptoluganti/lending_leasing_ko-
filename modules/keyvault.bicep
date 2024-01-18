@@ -7,7 +7,7 @@ param location string = resourceGroup().location
 @description('Specifies the Azure Active Directory tenant ID that should be used for authenticating requests to the key vault. Get it by using Get-AzSubscription cmdlet.')
 param tenantId string = subscription().tenantId
 
-resource kv 'Microsoft.KeyVault/vaults@2019-09-01' = {
+resource kv 'Microsoft.KeyVault/vaults@2023-07-01' = {
   name: keyVaultName
   location: location
   properties: {
