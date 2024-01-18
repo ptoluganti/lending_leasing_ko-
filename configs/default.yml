@@ -1,0 +1,5 @@
+
+
+private_dns_zones:
+  - name: privatelink.azuredatabricks.net
+    resource_group: 
