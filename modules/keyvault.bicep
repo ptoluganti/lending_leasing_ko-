@@ -16,6 +16,7 @@ resource kv 'Microsoft.KeyVault/vaults@2023-07-01' = {
     enabledForDiskEncryption: true
     enablePurgeProtection: true
     enableRbacAuthorization: true
+    publicNetworkAccess: 'Disabled'
     sku: {
       name: 'premium'
       family: 'A'
@@ -31,5 +32,13 @@ resource kv 'Microsoft.KeyVault/vaults@2023-07-01' = {
 resource infraKeys 'Microsoft.KeyVault/vaults/keys@2023-07-01' = [for keyName in [ 'databricks-key', 'storage-key' ]: {
   parent: kv
   name: keyName
-  properties: {}
+  properties: {
+    kty: 'RSA-HSM'
+    keySize: 2048
+    rotationPolicy: {
+      attributes: {
+        expiryTime: 'P2Y'
+      }
+    }
+  }
 }]
