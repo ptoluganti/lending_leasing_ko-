@@ -12,7 +12,7 @@ param keyExpiration int = dateTimeToEpoch(dateTimeAdd(utcNow(), 'P2Y'))
 
 resource kv 'Microsoft.KeyVault/vaults@2023-07-01' = {
   name: keyVaultName
-  location: location
+  // location: location
   properties: {
     enabledForDeployment: true
     enabledForTemplateDeployment: true
